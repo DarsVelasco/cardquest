@@ -1,9 +1,8 @@
 from django.views.generic.list import ListView
-from django.views.generic.list import UpdateView, DeleteView, CreateView 
-from cardquest.models import PokemonCard, Trainer, Collection
+from django.views.generic.edit import UpdateView, DeleteView, CreateView
+from cardquest.models import PokemonCard, Trainer
 from cardquest.forms import TrainerForm
 from django.urls import reverse_lazy
-
 class HomePageView(ListView):
     model = PokemonCard
     context_object_name = 'home'
