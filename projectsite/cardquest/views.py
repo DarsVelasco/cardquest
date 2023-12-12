@@ -16,7 +16,7 @@ class HomePageView(ListView):
 class TrainerList(ListView):
     model = Trainer
     context_object_name = 'trainer'
-    template_name = 'trainers.html'
+    template_name = 'trainer.html'
     paginate_by = 15
     
     
