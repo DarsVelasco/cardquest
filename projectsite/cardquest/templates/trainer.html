@@ -1,42 +1,43 @@
 {% extends 'base.html' %}
 
+{% block title %} CardQuest Master | Trainer{% endblock %}
+
 {% block navbar %}
-  <section class="navbar">
-    <a href='{% url "home" %}' class="btn"> Home </a>
-    <a href='{% url "trainer-list" %}' class="btn" id="active"> Trainer </a>
-    <a href='{% url "pokemon-card" %}' class="btn"> Pokemon Card </a>
-    <a href='{% url "collection" %}' class="btn"> Collection </a>
-  </section>
-{% endblock navbar %}
+    <section class="navbar">
+        <a href="{% url 'home' %}" class="btn"> Home </a>
+        <a href="{% url 'trainer-list' %}" class="btn" id="active"> Trainer </a>
+        <a href="{% url 'pokemon-card' %}" class="btn"> Pokemon Card </a>
+        <a href="{% url 'collection' %}" class="btn"> Collection </a>
+    </section>
+{% endblock %}
 
 {% block content %}
-  <a href="{% url 'trainer-add' %}" class="btn btn-outline-primary">Add New
-  Trainer</a><br>
-  <section class="trainers-container">
-    <table class="styled-table">
-      <tbody>
+<!--TRAINERS-->
+    <div>
+        <a href="{% url 'trainer-add' %}" class="btn btn-outline-primary">Add New Trainer</a><br>
+        <section class="trainers-container">
+            <table class="styled-table">
+                <tbody>
+                    <tr>
+                        <th>Trainer Name</th>
+                        <th>Birthdate</th>
+                        <th>Location</th>
+                        <th>Email</th>
+                        <th>Action</th>   
+                    </tr>
 
-        <tr>
-          <th>Trainer Name</th>
-          <th>Birthdate</th>
-          <th>Location</th>
-          <th>Email</th>
-          <th>Action</th>
-        </tr>
+                    </tr>
+                    {% for object in object_list %}
+                    <tr>
+                        <td>{{ object.birthdate }}</td>
+                        <td>{{ object.location }}</td>
+                        <td>{{ object.email}} </td>
 
-        {% for t in trainer %}
-          <tr>
-            <td>{{ t.name }}</td>
-            <td>{{ t.birthdate }}</td>
-            <td>{{ t.location }}</td>
-            <td>{{ t.email }}</td>
-            <td>
-              <a href="trainer_list/{{ t.id }}" >Edit</a> |
-              <a href="trainer_list/{{ t.id }}" >Delete</a>
-            </td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </section>
+                        <td>
+                            <a href="trainer_list/{{ object.id }}">Edit</a> |
+                            <a href="trainer_list/{{ object.id }}/delete" >Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+    </div>
 {% endblock %}
