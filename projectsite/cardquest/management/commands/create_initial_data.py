@@ -59,7 +59,6 @@ class Command(BaseCommand):
         collection1 = Collection(card=PokemonCard.objects.get(name="Pikachu"), trainer=Trainer.objects.get(name="Ash"), collection_date="2022-12-12")
         
         collections = [collection1]
-
         for collection in collections:
             collection.save()
         
