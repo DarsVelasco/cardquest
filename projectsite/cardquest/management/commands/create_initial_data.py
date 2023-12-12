@@ -7,6 +7,7 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         self.create_pokemon_cards()
         self.create_trainers()
+        self.create_collections()
 
     def create_pokemon_cards(self):
         card1 = PokemonCard(name="Pikachu", rarity="Rare",hp=60, card_type="Electric", attack="Thunder Shock", description="A mouse-like pokemon that can generate electricity.", weakness="Ground", card_number=25, release_date="1996-02-27", evolution_stage="Basic", abilities="Static")
