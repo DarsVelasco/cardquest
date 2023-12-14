@@ -58,8 +58,22 @@ class Command(BaseCommand):
     def create_collections(self):
     
         collection1 = Collection(card=PokemonCard.objects.get(name="Pikachu"), trainer=Trainer.objects.get(name="Ash"), collection_date="2022-12-12")
+        collection2 = Collection(card=PokemonCard.objects.get(name="Charmeleon"), trainer=Trainer.objects.get(name="Gary"), collection_date="2022-12-17")
+        collection3 = Collection(card=PokemonCard.objects.get(name="Eevee"), trainer=Trainer.objects.get(name="Cedric"), collection_date="2022-12-19")
+        collection4 = Collection(card=PokemonCard.objects.get(name="Darkrai"), trainer=Trainer.objects.get(name="Ronald"), collection_date="2022-12-22")
+        collection5 = Collection(card=PokemonCard.objects.get(name="Meowth"), trainer=Trainer.objects.get(name="Giovanni"), collection_date="2022-12-26")
+        collection6 = Collection(card=PokemonCard.objects.get(name="Entei"), trainer=Trainer.objects.get(name="Silver"), collection_date="2022-12-11")
+        collection7 = Collection(card=PokemonCard.objects.get(name="Totodile"), trainer=Trainer.objects.get(name="Gary"), collection_date="2022-12-02")
+        collection8 = Collection(card=PokemonCard.objects.get(name="Pancham"), trainer=Trainer.objects.get(name="Aaron"), collection_date="2022-12-20")
+        collection9 = Collection(card=PokemonCard.objects.get(name="Snorlax"), trainer=Trainer.objects.get(name="Cedric"), collection_date="2022-12-06")
+        collection10 = Collection(card=PokemonCard.objects.get(name="Raikou"), trainer=Trainer.objects.get(name="Ronald"), collection_date="2022-12-07")
+        collection11= Collection(card=PokemonCard.objects.get(name="Cryogonal"), trainer=Trainer.objects.get(name="Steven"), collection_date="2022-12-09")
+        collection12 = Collection(card=PokemonCard.objects.get(name="Deoxys"), trainer=Trainer.objects.get(name="Gold"), collection_date="2022-12-01")
+        collection13 = Collection(card=PokemonCard.objects.get(name="Caterpie"), trainer=Trainer.objects.get(name="Roxanne"), collection_date="2022-12-05")
+        collection14 = Collection(card=PokemonCard.objects.get(name="Mudkip"), trainer=Trainer.objects.get(name="Steven"), collection_date="2022-12-27")
+        collection15 = Collection(card=PokemonCard.objects.get(name="Mudkip"), trainer=Trainer.objects.get(name="Steven"), collection_date="2022-12-10")
         
-        collections = [collection1]
+        collections = [collection1,collection2,collection2,collection3,collection4,collection5,collection6,collection7,collection8,collection9,collection10,collection11,collection12,collection13,collection14,collection15]
         for collection in collections:
             collection.save()
         
