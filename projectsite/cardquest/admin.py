@@ -4,16 +4,16 @@ from . import models
 
 @admin.register(models.Trainer)
 class TrainerAdmin(admin.ModelAdmin):
-    list_display = ("created_at","updated_at","name", "birthdate", "location", "email")
+    list_display = ("name", "birthdate", "location", "email","created_at","updated_at")
     search_fields = ("name", "location",)
 
 @admin.register(models.PokemonCard)
 class PokemonCardAdmin(admin.ModelAdmin):
-    list_display = ("created_at","updated_at","name", "rarity")
+    list_display = ("name", "rarity","created_at","updated_at")
     search_fields = ("name",)
 
 @admin.register(models.Collection)
 class CollectionAdmin(admin.ModelAdmin):
-    list_display = ("created_at","updated_at","card", "trainer", "collection_date")
+    list_display = ("card", "trainer", "collection_date","created_at","updated_at")
     search_fields = ("card","trainer",)
     
