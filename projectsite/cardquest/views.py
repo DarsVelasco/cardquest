@@ -24,12 +24,6 @@ class TrainerList(ListView):
     template_name = 'trainer.html'
     paginate_by = 5
 
-class PokemonCardList(ListView):
-    model = PokemonCard
-    context_object_name = 'pokemon-card'
-    template_name = 'pokemon-card.html'
-    paginate_by = 3
-
 class CollectionList(ListView):
     model = Collection
     context_object_name = 'collection'
