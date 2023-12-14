@@ -5,6 +5,7 @@ from cardquest.models import Trainer, PokemonCard, Collection
 from cardquest.forms import TrainerForm
 
 from django.urls import reverse_lazy
+import json
 
 
 # Create your views here.
@@ -52,4 +53,19 @@ class TrainerDeleteView(DeleteView):
     template_name = 'trainer_del.html'
     success_url = reverse_lazy('trainer-list')
 
+class PokemonCardListView(ListView):
+    model = PokemonCard
+    context_object_name = 'pokemoncard'
+    template_name = "pokemoncards.html"
+    json_file_path = 'data/pokemon_data.json'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        pokemon_data = self.get_pokemon_data()
+        context['pokemon_data'] = pokemon_data
+        return context
+
+    def get_pokemon_data(self):
+        with open(self.json_file_path, 'r') as file:
+            data = json.load(file)
+        return data.get('pokemons', [])

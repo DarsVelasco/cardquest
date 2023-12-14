@@ -1,5 +1,5 @@
 from django.urls import path
-from cardquest.views import HomePageView, TrainerList, TrainerCreateView, TrainerUpdateView, TrainerDeleteView
+from cardquest.views import HomePageView, TrainerList, TrainerCreateView, TrainerUpdateView, TrainerDeleteView,PokemonCardListView
 from . import views
 
 urlpatterns = [
@@ -10,4 +10,5 @@ urlpatterns = [
     path('trainer_list/add', TrainerCreateView.as_view(), name='trainer-add'),
     path('trainer_list/<pk>', TrainerUpdateView.as_view(), name='trainer-update'),
     path('trainer_list/<pk>/delete', TrainerDeleteView.as_view(), name='trainer-delete'),
+    path('pokemoncard_list', PokemonCardListView.as_view(), name='pokemoncard-list'),
 ]
