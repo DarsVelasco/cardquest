@@ -21,7 +21,7 @@ class TrainerList(ListView):
     model = Trainer
     context_object_name = 'trainer'
     template_name = 'trainer.html'
-    paginate_by = 9
+    paginate_by = 5
 
 class PokemonCardList(ListView):
     model = PokemonCard
@@ -33,7 +33,7 @@ class CollectionList(ListView):
     model = Collection
     context_object_name = 'collection'
     template_name = 'collection.html'
-    paginate_by = 10
+    paginate_by = 5
 
 class TrainerCreateView(CreateView):
     model = Trainer
