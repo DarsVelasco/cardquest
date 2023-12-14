@@ -3,9 +3,9 @@ from django.views.generic.list import ListView
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
 from cardquest.models import Trainer, PokemonCard, Collection
 from cardquest.forms import TrainerForm
+import json
 
 from django.urls import reverse_lazy
-import json
 
 
 # Create your views here.
@@ -22,13 +22,28 @@ class TrainerList(ListView):
     model = Trainer
     context_object_name = 'trainer'
     template_name = 'trainer.html'
-    paginate_by = 5
+    paginate_by = 9
+
+class PokemonCardListView(ListView):
+    model = PokemonCard
+    context_object_name = 'pokemoncard'
+    template_name = "pokemon-card.html"
+    json_file_path = 'data/pokemon_data.json'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        pokemon_data = self.get_pokemon_data()
+        context['pokemon_data'] = pokemon_data
+        return context
+    def get_pokemon_data(self):
+        with open(self.json_file_path, 'r') as file:
+            data = json.load(file)
+            return data.get('pokemons', [])
 
 class CollectionList(ListView):
     model = Collection
     context_object_name = 'collection'
     template_name = 'collection.html'
-    paginate_by = 5
+    paginate_by = 10
 
 class TrainerCreateView(CreateView):
     model = Trainer
@@ -47,19 +62,4 @@ class TrainerDeleteView(DeleteView):
     template_name = 'trainer_del.html'
     success_url = reverse_lazy('trainer-list')
 
-class PokemonCardListView(ListView):
-    model = PokemonCard
-    context_object_name = 'pokemoncard'
-    template_name = "pokemoncards.html"
-    json_file_path = 'data/pokemon_data.json'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        pokemon_data = self.get_pokemon_data()
-        context['pokemon_data'] = pokemon_data
-        return context
-
-    def get_pokemon_data(self):
-        with open(self.json_file_path, 'r') as file:
-            data = json.load(file)
-        return data.get('pokemons', [])
