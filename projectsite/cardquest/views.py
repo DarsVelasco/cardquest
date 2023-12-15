@@ -98,7 +98,7 @@ class CollectionUpdateView(UpdateView):
     template_name = 'collection_edit.html'
     success_url = reverse_lazy('collection')
     
-class CollectionDeleteView(CreateView):
+class CollectionDeleteView(DeleteView):
     model = Collection
     template_name = 'collection_del.html'
     success_url = reverse_lazy('collection')
