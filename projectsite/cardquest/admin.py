@@ -1,7 +1,6 @@
 from django.contrib import admin
 from . import models
 
-
 @admin.register(models.Trainer)
 class TrainerAdmin(admin.ModelAdmin):
     list_display = ("name", "birthdate", "location", "email","created_at","updated_at")
@@ -9,8 +8,8 @@ class TrainerAdmin(admin.ModelAdmin):
 
 @admin.register(models.PokemonCard)
 class PokemonCardAdmin(admin.ModelAdmin):
-    list_display = ("name", "rarity","created_at","updated_at")
-    search_fields = ("name",)
+    list_display = ("name", "rarity","hp","card_type","attack","description","weakness","card_number","release_date","evolution_stage","abilities","created_at","updated_at")
+    search_fields = ("name","card_number","card_type")
 
 @admin.register(models.Collection)
 class CollectionAdmin(admin.ModelAdmin):
